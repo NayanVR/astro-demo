@@ -1,0 +1,17 @@
+---
+const data = await fetch(
+  "https://backend-omega-seven.vercel.app/api/getjoke"
+).then((res) => res.json());
+const { question, punchline } = data.at(0);
+---
+
+<div class="text-xl">
+  <h2>
+    Question:
+    <span class="text-gray-500">{question}</span>
+  </h2>
+  <h2 class="text-xl">
+    Punchline:
+    <span class="text-gray-500">{punchline}</span>
+  </h2>
+</div>

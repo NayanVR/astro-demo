@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+  const authorEntries = await getCollection("authors");
+  return blogEntries.map((entry) => {
+    const author = authorEntries.find(
+      (author) => author.id === entry.data.author.id
+    );
+    return {
+      params: { slug: entry.slug },
+      props: { entry, author },
+    };
+  });
+}
+
+const { entry, author } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BlogLayout title={entry.data.title}>
+  <img transition:name={"img-" + entry.slug} src={entry.data.image} />
+  <h1 transition:name={"title-" + entry.slug} class="text-2xl">
+    {entry.data.title}
+  </h1>
+  <a class="text-blue-800 italic" href={author.data.portfolio}
+    >{author.data.name}</a
+  >
+  <article>
+    <Content />
+  </article>
+</BlogLayout>

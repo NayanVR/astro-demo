@@ -1,0 +1,20 @@
+---
+import Counter from "../components/Counter";
+import Joke from "../components/Joke.astro";
+import SecondCounter from "../components/SecondCounter.svelte";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="flex flex-col gap-4 h-screen">
+    <h1 class="text-3xl">A random joke</h1>
+    <Joke />
+    <Counter client:load />
+    <a class="bg-blue-300 px-4 py-2 w-fit rounded-md" href="/blog"
+      >Check out some blogs!</a
+    >
+  </main>
+  <div class="m-8">
+    <SecondCounter client:visible />
+  </div>
+</Layout>
