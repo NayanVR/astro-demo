@@ -22,7 +22,7 @@ const { Content } = await entry.render();
 
 <BlogLayout title={entry.data.title}>
   <img transition:name={"img-" + entry.slug} src={entry.data.image} />
-  <h1 transition:name={"title-" + entry.slug} class="text-2xl">
+  <h1 class="text-2xl">
     {entry.data.title}
   </h1>
   <a class="text-blue-800 italic" href={author.data.portfolio}

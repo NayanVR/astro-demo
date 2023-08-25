@@ -15,12 +15,7 @@ const blogEntries = await getCollection("blog");
               transition:name={"img-" + blogPostEntry.slug}
               src={blogPostEntry.data.image}
             />
-            <h1
-              transition:name={"title-" + blogPostEntry.slug}
-              class="text-2xl"
-            >
-              {blogPostEntry.data.title}
-            </h1>
+            <h1 class="text-2xl">{blogPostEntry.data.title}</h1>
             <span class="text-gray-800 italic">
               {blogPostEntry.data.author.id}
             </span>
